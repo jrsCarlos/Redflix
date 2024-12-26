@@ -1,18 +1,27 @@
 (define (problem Ext2)
     (:domain plannerExt2)
     (:objects
-        c1 c2 c3 c4 c5 c6 c7 c8 - contenido
+        c1 c2 c3 c4 c5 c6 c7 c8 c9 c10 - contenido
         d1 d2 d3 d4 d5 d6 d7 - dia
     )
     (:init
         (predecesor c1 c2)
         (predecesor c2 c3)
         (predecesor c3 c4)
-        (predecesor c3 c5)
+        (predecesor c4 c5)
+        (predecesor c5 c9)
+        (predecesor c9 c10)
 
         (paralelo c1 c6)
-        (paralelo c2 c7)
-        (paralelo c3 c8)
+        (paralelo c4 c7)
+        (paralelo c8 c10)
+
+        (diaSiguiente d2 d1)
+        (diaSiguiente d3 d2)
+        (diaSiguiente d4 d3)
+        (diaSiguiente d5 d4)
+        (diaSiguiente d6 d5)
+        (diaSiguiente d7 d6)
 
         (diaAnterior d1 d2)
         (diaAnterior d1 d3)
