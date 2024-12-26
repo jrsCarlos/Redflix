@@ -1,1 +1,2 @@
 # Redflix
+:ty(:predicates )
