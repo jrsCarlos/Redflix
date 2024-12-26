@@ -13,7 +13,6 @@
     (:action ver
         :parameters (?f - contenido)
         :precondition (and
-            (quiere_ver ?f)
             (not (ha_visto ?f))
             (not (exists
                     (?pre - contenido)

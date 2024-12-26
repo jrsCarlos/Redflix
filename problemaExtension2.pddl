@@ -1,0 +1,43 @@
+(define (problem Ext2)
+    (:domain plannerExt2)
+    (:objects
+        c1 c2 c3 c4 c5 c6 c7 c8 - contenido
+        d1 d2 d3 d4 d5 d6 d7 - dia
+    )
+    (:init
+        (predecesor c1 c2)
+        (predecesor c2 c3)
+        (predecesor c3 c4)
+        (predecesor c3 c5)
+
+        (paralelo c1 c6)
+        (paralelo c2 c7)
+        (paralelo c3 c8)
+
+        (diaAnterior d1 d2)
+        (diaAnterior d1 d3)
+        (diaAnterior d1 d4)
+        (diaAnterior d1 d5)
+        (diaAnterior d1 d6)
+        (diaAnterior d1 d7)
+        (diaAnterior d2 d3)
+        (diaAnterior d2 d4)
+        (diaAnterior d2 d4)
+        (diaAnterior d2 d5)
+        (diaAnterior d2 d6)
+        (diaAnterior d2 d7)
+        (diaAnterior d3 d4)
+        (diaAnterior d3 d5)
+        (diaAnterior d3 d6)
+        (diaAnterior d3 d7)
+        (diaAnterior d4 d5)
+        (diaAnterior d4 d6)
+        (diaAnterior d4 d7)
+        (diaAnterior d5 d6)
+        (diaAnterior d5 d7)
+        (diaAnterior d6 d7)
+    )
+    (:goal
+        (and (ha_visto c1) (ha_visto c5))
+    )
+)

@@ -1,4 +1,4 @@
-(define (domain plannerExt1)
+(define (domain plannerExt2)
     (:requirements :adl :typing)
     (:types
         contenido dia - object
@@ -10,7 +10,7 @@
         (quiere_ver ?f - contenido)
         (diaAnterior ?prev - dia ?next - dia)
         (asignado ?f - contenido ?d - dia)
-        ;(diaAsignado  ?d - dia) ; <- dia actual?
+        (paralelo ?f1 - contenido ?f2 - contenido)
     )
 
     (:action ver
@@ -26,6 +26,19 @@
                         (and
                             (asignado ?pre ?d2)
                             (diaAnterior ?d2 ?dia)
+                        )
+                    )
+                ))
+                
+            (forall
+                (?par - contenido)
+                (imply
+                    (paralelo ?f ?par)
+                    (exists
+                        (?d3 - dia)
+                        (or
+                            (asignado ?par ?dia)
+                            (and (asignado ?par ?d3) (diaAnterior ?d3 ?dia))
                         )
                     )
                 )))
