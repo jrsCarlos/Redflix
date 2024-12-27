@@ -13,14 +13,14 @@
         (predecesor c6 c7)
 
         (paralelo c1 c8)
+        (paralelo c1 c9)
         (paralelo c1 c10)
-        (paralelo c1 c12)
-        (paralelo c1 c14)
+        (paralelo c1 c11)
 
-        (paralelo c8 c9)
-        (paralelo c8 c11)
-        (paralelo c8 c13)
-        (paralelo c8 c15)
+        (paralelo c7 c12)
+        (paralelo c7 c13)
+        (paralelo c7 c14)
+        (paralelo c7 c15)
 
         (diaSiguiente d2 d1)
         (diaSiguiente d3 d2)
