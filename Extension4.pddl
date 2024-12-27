@@ -1,4 +1,4 @@
-(define (domain plannerExt3)
+(define (domain plannerExt4)
     (:requirements :adl :typing :fluents)
     (:types
         contenido dia - object
@@ -15,14 +15,15 @@
     )
 
     (:functions
-        (numAsignados ?d - dia)
+        (duracionContenido ?d - contenido)
+        (duracionDiaria ?dd - dia)
     )
 
     (:action ver
         :parameters (?f - contenido ?dia - dia)
         :precondition (and
             (not (ha_visto ?f))
-            (< (numAsignados ?dia) 3)
+            (<= (+ (duracionDiaria ?dia) (duracionContenido ?f)) 200)
             (forall
                 (?pre - contenido)
                 (and
@@ -50,6 +51,6 @@
             ))
         ;(exists (?prev - dia) (diaAnterior ?prev ?dia) (diaAsignado ?prev))  
         ;(diaAsignado (- ?dia 1)) ; no se puede hacer operaciones con boleanos
-        :effect (and (ha_visto ?f) (asignado ?f ?dia) (increase (numAsignados ?dia) 1))
+        :effect (and (ha_visto ?f) (asignado ?f ?dia) (increase (duracionDiaria ?dia) (duracionContenido ?f)))
     )
 )
