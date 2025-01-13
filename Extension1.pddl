@@ -6,31 +6,31 @@
 
     (:predicates
         (predecesor ?pre - contenido ?post - contenido)
-        (ha_visto ?f - contenido)
-        (quiere_ver ?f - contenido)
-        (diaAnterior ?prev - dia ?next - dia)
-        (asignado ?f - contenido ?d - dia)
-        ;(diaAsignado  ?d - dia) ; <- dia actual?
+        (ha-visto ?c - contenido)
+        (dia-anterior ?prev - dia ?next - dia)
+        (asignado ?c - contenido ?d - dia)
     )
 
     (:action ver
-        :parameters (?f - contenido ?dia - dia)
+        :parameters (?c - contenido ?dia - dia)
         :precondition (and
-            (not (ha_visto ?f))
-            (forall
-                (?pre - contenido)
-                (imply
-                    (predecesor ?pre ?f)
-                    (exists
-                        (?d2 - dia)
-                        (and
-                            (asignado ?pre ?d2)
-                            (diaAnterior ?d2 ?dia)
-                        )
-                    )
-                )))
-        ;(exists (?prev - dia) (diaAnterior ?prev ?dia) (diaAsignado ?prev))  
-        ;(diaAsignado (- ?dia 1)) ; no se puede hacer operaciones con boleanos
-        :effect (and (ha_visto ?f) (asignado ?f ?dia))
+                          ; Evitamos ver contenidos ya vistos
+                          (not (ha-visto ?c))
+                          ; Para todos los contenidos que son predecessores de ?c
+                          (forall (?pre - contenido)
+                                  (imply (predecesor ?pre ?c)
+                                         ; Debe existir un dia anterior en el que se haya asignado ?pre
+                                         (exists (?d2 - dia)
+                                             (and
+                                                 (asignado ?pre ?d2)
+                                                 (dia-anterior ?d2 ?dia)
+                                             )
+                                         )
+                                  )
+                          )
+                      )
+
+        ; Marcamos el contenido como visto y lo asignamos al dia correspondiente
+        :effect (and (ha-visto ?c) (asignado ?c ?dia))
     )
 )
