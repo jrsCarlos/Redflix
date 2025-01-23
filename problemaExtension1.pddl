@@ -6,10 +6,10 @@
     )
     (:init
         ; Establecemos las relaciones entre contenidos.
-        (predecesor c1 c2)
-        (predecesor c2 c3)
-        (predecesor c3 c4)
+        (predecesor c1 c5)
+        (predecesor c2 c5)
         (predecesor c3 c5)
+        (predecesor c4 c5)
 
         ; Establecemos un orden entre los dias.
         ; Para que el orden se coherente tenemos no nos basta con marcar
@@ -41,6 +41,6 @@
 
     (:goal
         ; Establecemos los contenidos que el usuario habra visto tras seguir el plan.
-        (and (ha-visto c1) (ha-visto c5))
+        (and (ha-visto c5))
     )
 )

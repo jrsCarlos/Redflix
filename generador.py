@@ -301,10 +301,6 @@ def gen_ext4_case():
         print("\t)", file=f)
         print(")",file=f)
 
-
-gen_base_case()
-gen_ext1_case()
-gen_ext2_case()
-gen_ext3_case()
 gen_ext4_case()
+
 
